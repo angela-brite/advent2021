@@ -1,6 +1,9 @@
+use std::{
+    fs::File,
+    io::{self, BufRead, BufReader},
+    path::Path,
+};
 
-use std::fs;
-
-pub fn open_file(filename: &str) -> String{
-    fs::read_to_string(filename).expect("Unable to open file")
+pub fn lines_from_file(filename: impl AsRef<Path>) -> io::Result<Vec<String>> {
+    BufReader::new(File::open(filename)?).lines().collect()
 }

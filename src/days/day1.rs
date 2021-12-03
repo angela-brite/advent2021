@@ -1,5 +1,5 @@
-use crate::common::open_file;
+use crate::common::lines_from_file;
 
 pub fn run() {
-    todo!()
+    let input = lines_from_file("data/day1_input.txt");
 }
