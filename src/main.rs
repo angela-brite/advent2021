@@ -1,5 +1,6 @@
 use std::env;
 use anyhow::Error;
+mod common;
 mod days;
 use crate::days::*;
 
