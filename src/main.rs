@@ -11,6 +11,7 @@ fn main() -> Result<(), Error>{
 
     match selection {
         1 => day1::run(part),
+        2 => day2::run(part),
         _ => println!("Unknown day provided!"),
     };
     Ok(())

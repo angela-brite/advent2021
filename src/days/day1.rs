@@ -10,7 +10,7 @@ pub fn run(part: u32) {
 
 fn part_one() {
     let input = lines_from_file("data/day1_input.txt").unwrap();
-    let depths: Vec<u32> = input.iter().map(|line| line.parse::<u32>().unwrap()).collect();
+    let depths: Vec<u32> = input.into_iter().map(|line| line.parse::<u32>().unwrap()).collect();
     let depth_increases = depths
         .windows(2)
         .filter(|depth| depth[1] > depth[0])
@@ -19,5 +19,20 @@ fn part_one() {
 }
 
 fn part_two() {
-    todo!()
+    let input = lines_from_file("data/day1_input.txt").unwrap();
+    let mut depths: Vec<u32> = input.into_iter().map(|line| line.parse::<u32>().unwrap()).collect();
+    depths.extend_from_within(..2);
+
+    let tri_depths =  depths
+        .windows(3)
+        .map(|tri| tri.into_iter().sum())
+        .collect::<Vec<u32>>();
+
+    let depth_increases = tri_depths
+        .windows(2)
+        .filter(|depth| depth[1] > depth[0])
+        .count(); 
+        
+    
+    println!("Depth changes: {}", depth_increases)
 }
